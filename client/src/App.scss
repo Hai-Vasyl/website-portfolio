@@ -1,0 +1,266 @@
+$colors: (
+  primary: blue,
+  secondary: rgb(208, 208, 208),
+  accent: white,
+  text: #333,
+  active-link: rgb(248, 14, 14),
+  main: whitesmoke,
+  light-text: lighten(#333, 50%),
+);
+$transitions: (
+  smooth: 0.3s ease,
+);
+
+@function getColor($color-name) {
+  @return map-get($colors, $color-name);
+}
+@function getTransitions($transition-name) {
+  @return map-get($transitions, $transition-name);
+}
+
+.nav {
+  border-bottom: 1px solid getColor(secondary);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  backdrop-filter: blur(4px);
+  &__menu {
+    width: 1400px;
+    max-width: 100%;
+    padding: 0px 50px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  &__link {
+    text-decoration: none;
+    color: getColor(text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    transform: translateY(1px);
+    &--active {
+      color: getColor(active-link);
+      border-left-color: getColor(secondary);
+      border-right-color: getColor(secondary);
+      border-bottom-color: getColor(main);
+    }
+  }
+  &__logo {
+    margin-right: auto;
+    font-family: "Dancing Script", cursive;
+    font-weight: bold;
+    font-size: 1.4em;
+    padding: 0px 12px;
+    .nav__icon {
+      font-size: 1.2em;
+      color: getColor(light-text);
+    }
+    .nav__name {
+      margin-left: 10px;
+    }
+  }
+  &__icon {
+  }
+  &__name {
+    margin-left: 6px;
+  }
+}
+
+.title {
+  font-size: 2.4em;
+  padding: 10px 0;
+  font-weight: normal;
+  color: getColor(light-text);
+  font-family: "Dancing Script", cursive;
+}
+.title-simple {
+  padding: 10px 0;
+  text-align: center;
+  font-size: 1.3em;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: getColor(text);
+  border: 1px solid getColor(text);
+  padding: 13px 16px;
+  border-radius: 5px;
+  &__icon {
+    margin: 0px 4px;
+  }
+  &__name {
+    margin-left: 7px;
+    margin: 0px 4px;
+  }
+}
+.btn-primary {
+  background-color: getColor(text);
+  color: white;
+}
+
+.wrapper {
+  margin: 0 auto;
+  height: 100vh;
+  width: 1300px;
+  max-width: 100%;
+  padding: 70px 50px;
+  // border-left: 1px dashed getColor(secondary);
+  // border-right: 1px dashed getColor(secondary);
+  display: flex;
+  flex-direction: column;
+}
+.background-shape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  clip-path: polygon(100% 0, 50% 100%, 0 100%, 0 0);
+  background-color: getColor(main);
+  z-index: -1;
+}
+.background-hero {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("./images/background-hero.jpg");
+  background-position: left top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: -2;
+}
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  width: 100%;
+  &__content {
+    width: 45%;
+    padding: 20px;
+  }
+  &__img-side {
+    width: 55%;
+    border: 1px solid getColor(secondary);
+  }
+  &__container-img {
+  }
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transform: scale(1.2);
+    filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.4));
+  }
+  &__title {
+    font-size: 4.3em;
+    line-height: 0.95em;
+    font-family: "Dancing Script", cursive;
+  }
+  &__accent {
+    font-size: 0.5em;
+    font-family: "Saira", sans-serif;
+    color: getColor(light-text);
+  }
+  &__paragraph {
+    padding-right: 20px;
+    font-size: 1.1em;
+    line-height: 1.4em;
+    margin: 1.8em 0;
+  }
+  &__btns {
+    display: flex;
+    align-items: center;
+    padding-top: 0.6em;
+  }
+  &__btn {
+    margin-left: 13px;
+  }
+}
+
+.about {
+  display: flex;
+  border: 1px solid getColor(secondary);
+  padding: 20px;
+  margin: auto;
+  width: 100%;
+  &__experience {
+    width: 50%;
+    margin-right: 20px;
+    padding-bottom: 76px;
+    position: relative;
+  }
+  &__info {
+    margin-bottom: 2em;
+  }
+  &__paragraph {
+    border: 1px solid getColor(secondary);
+    padding: 15px;
+    border-radius: 5px;
+  }
+  &__btn {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &__skills {
+    width: 50%;
+  }
+  &__container-skills {
+    border: 1px solid getColor(secondary);
+    padding: 15px;
+    border-radius: 5px;
+  }
+}
+
+.skill {
+  display: flex;
+  align-items: center;
+  // border: 1px solid getColor(secondary);
+  margin-bottom: 0.4em;
+  &:last-child {
+    margin-bottom: 0px;
+  }
+  &__container-counter {
+    width: 70px;
+    text-align: center;
+    position: relative;
+    // border: 1px solid getColor(secondary)
+    margin-right: 10px;
+  }
+  &__dashe {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    border-top: 1px dashed getColor(secondary);
+    z-index: -1;
+  }
+  &__counter {
+    width: 30px;
+    height: 30px;
+    line-height: 29px;
+    border: 1px dotted getColor(secondary);
+    border-radius: 50%;
+    background-color: getColor(main);
+    display: inline-block;
+    font-size: 0.7em;
+    font-weight: bold;
+    font-family: "Dancing Script", cursive;
+    color: getColor(light-text);
+  }
+}
