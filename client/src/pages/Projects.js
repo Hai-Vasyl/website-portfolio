@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import project11 from "../project-imgs/project1.1.png"
 import project12 from "../project-imgs/project1.2.png"
 import project13 from "../project-imgs/project1.3.png"
@@ -128,6 +128,39 @@ function ProjectsSection() {
     },
   ])
 
+  // const [activeCard, setActiveCard] = useState({
+  //   images: [],
+  //   github: "",
+  //   demo: "",
+  //   title: "",
+  //   technologies: [],
+  //   status: false,
+  // })
+
+  // const [moveDisabled, setMoveDisabled] = useState({
+  //   left: false,
+  //   right: false,
+  // })
+
+  // useEffect(() => {
+  //   let dataProject = {
+  //     images: [],
+  //     github: "",
+  //     demo: "",
+  //     title: "",
+  //     technologies: [],
+  //     status: false,
+  //   }
+
+  //   projects.forEach((item) => {
+  //     if (item.status) {
+  //       dataProject = item
+  //     }
+  //   })
+  //   console.log("sdfsfdfsdf")
+  //   setActiveCard(dataProject)
+  // }, [projects])
+
   const mapStatusReducer = (array, index) => {
     return array.map((item, itemIndex) => {
       if (itemIndex === index) {
@@ -171,6 +204,21 @@ function ProjectsSection() {
     )
   }
 
+  const handleMoveCard = (isLeft) => {
+    for (let i = 0; i < projects.length; i++) {
+      if (projects[i].status) {
+        projects[i].status = false
+
+        const index = isLeft ? i - 1 : i + 1
+
+        projects[index].status = true
+        break
+      }
+    }
+
+    setProjects(projects)
+  }
+
   const handleTab = (index, images) => {
     setProjects(
       projects.map((item) => {
@@ -212,7 +260,10 @@ function ProjectsSection() {
 
   const cards = projects.map((item, index) => {
     return (
-      <div key={item.github} className='project'>
+      <div
+        key={item.github}
+        className={`project ${item.status && "project--active"}`}
+      >
         <button className='project__btn' onClick={() => handleSetStatus(index)}>
           <img
             className='project__img'
@@ -245,21 +296,41 @@ function ProjectsSection() {
     )
   })
 
-  const activeCard = getActiveCard()
+  const popups = projects.map((item) => {
+    // console.log(item.status)
+    return (
+      <Popup
+        className={`test ${item.status && "test__activer"}`}
+        data={item}
+        handleMove={handleMove}
+        handleTab={handleTab}
+        handleMoveCard={handleMoveCard}
+      />
+    )
+  })
 
   return (
     <div className='wrapper'>
       <h2 className='title'>My latest projects</h2>
+      {/* {console.log(activeCard.images)} */}
 
-      <Popup data={activeCard} handleMove={handleMove} handleTab={handleTab} />
-
-      <div
+      {/* <Popup
+        data={getActiveCard()}
+        handleMove={handleMove}
+        handleTab={handleTab}
+        handleMoveCard={handleMoveCard}
+      /> */}
+      {/* {popups} */}
+      <button onClick={() => handleMoveCard(true)}>LEFT</button>
+      <button onClick={() => handleMoveCard(false)}>RIGHT</button>
+      {/* <div
         className={`background ${
-          activeCard.images.length && "background--active"
+          getActiveCard().images.length && "background--active"
         }`}
         onClick={handleResetCards}
-      ></div>
+      ></div> */}
       <div className='projects'>{cards}</div>
+      {console.log(projects)}
     </div>
   )
 }

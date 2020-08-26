@@ -2,7 +2,7 @@ import React from "react"
 import { FiGithub } from "react-icons/fi"
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs"
 
-function Popup({ data, handleMove, handleTab }) {
+function Popup({ data, handleMove, handleTab, handleMoveCard }) {
   const images = data.images.map((item) => {
     return (
       <img
@@ -39,7 +39,20 @@ function Popup({ data, handleMove, handleTab }) {
   })
 
   return (
-    <div className={`popup ${data.images.length && "popup--active"}`}>
+    <div className={`popup ${data.status && "popup--active"}`}>
+      {console.log("data: ", data)}
+      <button
+        className='popup__move-card-btn popup__left-card'
+        onClick={() => handleMoveCard(true)}
+      >
+        <BsChevronLeft />
+      </button>
+      <button
+        className='popup__move-card-btn popup__right-card'
+        onClick={() => handleMoveCard(false)}
+      >
+        <BsChevronRight />
+      </button>
       <div className='popup__imgs'>
         {images}
         <button
