@@ -1,6 +1,11 @@
 import React from "react"
 import { FiGithub } from "react-icons/fi"
-import { BsChevronLeft, BsChevronRight } from "react-icons/bs"
+import {
+  BsChevronLeft,
+  BsChevronRight,
+  BsArrowLeft,
+  BsArrowRight,
+} from "react-icons/bs"
 
 function Popup({ data, handleMove, handleTab, handleMoveCard }) {
   const images = data.images.map((item) => {
@@ -39,59 +44,64 @@ function Popup({ data, handleMove, handleTab, handleMoveCard }) {
   })
 
   return (
-    <div className={`popup ${data.status && "popup--active"}`}>
-      {console.log("data: ", data)}
-      <button
-        className='popup__move-card-btn popup__left-card'
-        onClick={() => handleMoveCard(true)}
-      >
-        <BsChevronLeft />
-      </button>
-      <button
-        className='popup__move-card-btn popup__right-card'
-        onClick={() => handleMoveCard(false)}
-      >
-        <BsChevronRight />
-      </button>
-      <div className='popup__imgs'>
-        {images}
+    <div className={`popup ${data.images.length && "popup--active"}`}>
+      <div className='popup__container'>
         <button
-          className='popup__move-btn popup__left'
-          onClick={() => handleMove(true, data.images)}
+          className={`popup__move-card-btn popup__left-card ${
+            data.disabledMove.left && "popup__move-card-btn--disabled"
+          }`}
+          onClick={() => handleMoveCard(true)}
         >
-          <BsChevronLeft />
+          <BsArrowLeft />
         </button>
         <button
-          className='popup__move-btn popup__right'
-          onClick={() => handleMove(false, data.images)}
+          className={`popup__move-card-btn popup__right-card ${
+            data.disabledMove.right && "popup__move-card-btn--disabled"
+          }`}
+          onClick={() => handleMoveCard(false)}
         >
-          <BsChevronRight />
+          <BsArrowRight />
         </button>
-        <div className='popup__tabs'>{btnTabs}</div>
-      </div>
-      <div className='popup__info'>
-        <h4 className='popup__title'>{data.title}</h4>
-        <div className='popup__title-simple'>Technologies</div>
-        <div className='popup__tech-links'>{links}</div>
-        <div className='popup__links project__links'>
-          <a
-            className='project__github'
-            href={data.github}
-            target='_blank'
-            rel='noopener noreferrer'
+        <div className='popup__imgs'>
+          {images}
+          <button
+            className='popup__move-btn popup__left'
+            onClick={() => handleMove(true, data.images)}
           >
-            <FiGithub />
-          </a>
-          <a
-            className='project__demo'
-            href={data.demo}
-            target='_blank'
-            rel='noopener noreferrer'
+            <BsChevronLeft />
+          </button>
+          <button
+            className='popup__move-btn popup__right'
+            onClick={() => handleMove(false, data.images)}
           >
-            <span className='project__body-arrow'></span>
-            <span className='project__tip-arrow'></span>
-            <span className='project__link'>{data.demo}</span>
-          </a>
+            <BsChevronRight />
+          </button>
+          <div className='popup__tabs'>{btnTabs}</div>
+        </div>
+        <div className='popup__info'>
+          <h4 className='popup__title'>{data.title}</h4>
+          <div className='popup__title-simple'>Technologies</div>
+          <div className='popup__tech-links'>{links}</div>
+          <div className='popup__links project__links'>
+            <a
+              className='project__github'
+              href={data.github}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <FiGithub />
+            </a>
+            <a
+              className='project__demo'
+              href={data.demo}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <span className='project__body-arrow'></span>
+              <span className='project__tip-arrow'></span>
+              <span className='project__link'>{data.demo}</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>

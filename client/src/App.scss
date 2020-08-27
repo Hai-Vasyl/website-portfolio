@@ -9,6 +9,7 @@ $colors: (
   bg-light: rgba(255, 255, 255, 0.3),
   bg-dark: rgba(51, 51, 51, 0.5),
   bg-lighter: rgba(255, 255, 255, 0.7),
+  bg-light-clear: rgba(255, 255, 255, 0.1),
 );
 $transitions: (
   smooth: 0.2s ease,
@@ -319,6 +320,18 @@ $fonts: (
   }
 }
 
+// .test {
+//   width: 100px;
+//   height: 100px;
+//   background-color: black;
+//   border: 1px solid getColor(secondary);
+//   color: white;
+//   font-size: 4em;
+//   &--active {
+//     background-color: red;
+//   }
+// }
+
 .project {
   width: 32%;
   // border: 1px solid getColor(secondary);
@@ -430,33 +443,47 @@ $fonts: (
   position: absolute;
   width: 1200px;
   max-width: 100%;
-  display: flex;
   z-index: 7;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.9);
   transition: getTransitions(smooth);
-  // opacity: 0;
-  // visibility: hidden;
-  display: none;
-  &--active {
+  opacity: 0;
+  visibility: hidden;
+  padding: 0px 50px;
+  &__container {
     display: flex;
-    // opacity: 1;
-    // visibility: visible;
-    // transform: translate(-50%, -50%) scale(1);
+    position: relative;
+  }
+  &--active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
   }
   &__move-card-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     z-index: 2;
-    border: 1px solid getColor(secondary);
+    // border: 1px solid getColor(secondary);
     width: 43px;
     height: 43px;
     border-radius: 50%;
-    background-color: getColor(bg-light);
-    line-height: 48.5px;
+
+    color: white;
+    background-color: transparent;
+    line-height: 52px;
     text-align: center;
+    opacity: 1;
+    font-size: 1.3em;
+    visibility: visible;
+    &--disabled {
+      opacity: 0;
+      visibility: hidden;
+    }
+    &:hover {
+      background-color: getColor(bg-light-clear);
+    }
   }
   &__left-card {
     left: -50px;
@@ -468,52 +495,51 @@ $fonts: (
     position: relative;
     width: 65%;
     min-height: 504px;
-    // border: 1px solid getColor(secondary);
-    padding: 10px;
+    border: 1px solid getColor(bg-light);
+    // padding: 10px;
+    border-right: none;
     background-color: getColor(bg-light);
     backdrop-filter: blur(3px);
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-  }
-  &__move-btn {
-    position: absolute;
-    font-size: 1.1em;
-    height: 90px;
-    width: 40px;
-    top: 50%;
-    line-height: 97px;
-    text-align: center;
-    transform: translateY(-50%);
-    // color: getColor(light-text);
-    background-color: getColor(bg-lighter);
-    border: 1px solid getColor(secondary);
-    // backdrop-filter: blur(10px);
-  }
-  &__left {
-    left: 0;
-    // border-left: none;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-  }
-  &__right {
-    right: 0;
-    // border-right: none;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
   }
-  &__img {
+  &__move-btn {
     position: absolute;
-    left: 12px;
-    right: 12px;
-    top: 0;
-    bottom: 0;
-    width: calc(100% - 24px);
+    height: 35px;
+    width: 35px;
+    top: 50%;
+    line-height: 43px;
+    text-align: center;
+    transform: translateY(-50%);
+    background-color: getColor(bg-light-clear);
+    font-size: 1em;
+    color: getColor(light-text);
+    box-shadow: 0px 0px 3px getColor(bg-dark);
+    border-radius: 50%;
+  }
+  &__left {
+    left: 8px;
+  }
+  &__right {
+    right: 8px;
+  }
+  &__img {
+    // position: absolute;
+    // left: 0px;
+    // right: 0px;
+    // top: 0;
+    // bottom: 0;
+    width: 100%;
     height: 100%;
     object-fit: contain;
     transition: getTransitions(smooth);
     opacity: 0;
+    // visibility: hidden;
+    display: none;
     &--active {
+      display: block;
       opacity: 1;
+      // visibility: visible;
     }
   }
   &__tabs {
@@ -527,16 +553,18 @@ $fonts: (
     transform: translateX(-50%);
   }
   &__tab {
-    width: 15px;
-    height: 15px;
-    margin-right: 5px;
-    border: 1px solid getColor(text);
+    width: 13px;
+    height: 13px;
+    margin-right: 6px;
     border-radius: 50%;
     transition: getTransitions(smooth);
     background-color: getColor(bg-light);
+    box-shadow: 0px 0px 3px getColor(bg-dark);
     &--active {
-      // transform: scale(1.3);
-      background-color: getColor(text);
+      background-color: white;
+    }
+    &:hover {
+      transform: scale(1.3);
     }
     &:last-child {
       margin-right: 0px;
@@ -548,8 +576,8 @@ $fonts: (
     position: relative;
     padding-bottom: 112px;
     background-color: getColor(main);
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
   }
   &__title {
     font-size: 1.2em;
