@@ -237,10 +237,7 @@ function ProjectsSection() {
 
   const cards = projects.map((item, index) => {
     return (
-      <div
-        key={item.github}
-        className={`project ${item.status && "project--active"}`}
-      >
+      <div key={item.github} className='project'>
         <button className='project__btn' onClick={() => handleSetStatus(index)}>
           <img
             className='project__img'
