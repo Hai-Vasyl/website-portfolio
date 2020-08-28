@@ -3,7 +3,7 @@ $colors: (
   secondary: rgb(208, 208, 208),
   accent: white,
   text: #333,
-  active-link: rgb(248, 14, 14),
+  active-link: #f80e0e,
   main: #f5f5f5,
   light-text: lighten(#333, 50%),
   bg-light: rgba(255, 255, 255, 0.3),
@@ -591,5 +591,99 @@ $fonts: (
     left: 20px;
     right: 20px;
     margin: 0;
+  }
+}
+
+.contacts {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  &__image-side {
+    width: 50%;
+    // border: 1px solid getColor(secondary);
+    // border-left: none;
+    border-bottom: 1px solid getColor(secondary);
+    padding: 20px;
+  }
+  &__image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    // transform: scale(1.4);
+  }
+}
+
+.field {
+  display: block;
+  margin-bottom: 0.5em;
+  &__name {
+    font-size: 1.1em;
+    display: block;
+  }
+  &__textarea {
+    height: 20vh;
+    resize: none;
+    vertical-align: top;
+  }
+  &__input {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid getColor(secondary);
+    &--error {
+      border-color: getColor(active-link);
+    }
+  }
+  &__msg {
+    height: 30px;
+    display: block;
+    color: getColor(active-link);
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+    transition: getTransitions(smooth);
+    opacity: 0;
+    visibility: hidden;
+    &--active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  &__msg-icon {
+  }
+  &__msg-name {
+    margin-left: 6px;
+  }
+}
+
+.form {
+  padding: 20px;
+  border: 1px solid getColor(secondary);
+  width: 50%;
+  &__fields {
+  }
+  &__btn-handler {
+    display: none;
+  }
+  &__btns {
+    display: flex;
+    align-items: center;
+    padding-top: 0.5em;
+  }
+  &__link {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    border: 1px solid getColor(text);
+    font-size: 1.3em;
+    color: getColor(text);
+    margin-right: 10px;
+  }
+  &__icon {
+    margin: auto;
+  }
+  &__submit {
+    margin-left: auto;
   }
 }
