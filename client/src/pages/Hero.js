@@ -1,8 +1,9 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import { FaPortrait, FaThList } from "react-icons/fa"
-import mainImage from "../images/web_development_.svg"
-function HeroSection() {
+import { AiOutlineCode, AiOutlineSolution } from "react-icons/ai"
+import mainImage from "../images/undraw_on_the_office_fbfs 1.svg"
+
+function HeroPage() {
   return (
     <div className='wrapper'>
       <div className='background-shape'></div>
@@ -21,11 +22,11 @@ function HeroSection() {
           </p>
           <div className='hero__btns'>
             <Link to='/projects' className='btn btn-primary'>
-              <FaThList className='btn__icon' />
+              <AiOutlineCode className='btn__icon' />
               <span className='btn__name'>Projects</span>
             </Link>
             <Link to='/about' className='hero__btn btn'>
-              <FaPortrait to='/about' className='btn__icon' />
+              <AiOutlineSolution to='/about' className='btn__icon' />
               <span className='btn__name'>About</span>
             </Link>
           </div>
@@ -40,4 +41,4 @@ function HeroSection() {
   )
 }
 
-export default HeroSection
+export default HeroPage

@@ -42,7 +42,6 @@ $fonts: (
   top: 0;
   left: 0;
   right: 0;
-  backdrop-filter: blur(4px);
   z-index: 9;
   &__menu {
     width: 1400px;
@@ -77,13 +76,14 @@ $fonts: (
     padding: 0px 12px;
     .nav__icon {
       font-size: 1.2em;
-      color: getColor(light-text);
+      color: getColor(active-link);
     }
     .nav__name {
       margin-left: 10px;
     }
   }
   &__icon {
+    color: getColor(bg-dark);
   }
   &__name {
     margin-left: 6px;
@@ -129,12 +129,30 @@ $fonts: (
   border: 1px solid getColor(text);
   padding: 13px 16px;
   border-radius: 5px;
+  transition: getTransitions(smooth);
+  overflow: hidden;
   &__icon {
     margin: 0px 4px;
+    transition: getTransitions(smooth);
   }
   &__name {
     margin-left: 7px;
     margin: 0px 4px;
+    transition: getTransitions(smooth);
+  }
+  &:hover {
+    border-color: getColor(active-link);
+    box-shadow: 0px 3px 3px rgba(51, 51, 51, 0.5),
+      0px 7px 10px rgba(0, 0, 0, 0.3);
+    .btn__icon {
+      opacity: 0;
+    }
+    .btn__name {
+      transform: translateX(-11px);
+    }
+  }
+  &:active {
+    transform: scale(0.95);
   }
 }
 .btn-primary {
@@ -159,9 +177,14 @@ $fonts: (
   left: 0;
   right: 0;
   bottom: 0;
-  clip-path: polygon(100% 0, 50% 100%, 0 100%, 0 0);
+  // clip-path: polygon(100% 0, 50% 100%, 0 100%, 0 0);
+  clip-path: polygon(100% 0, 100% 50%, 50% 100%, 0 100%, 0 0);
   background-color: getColor(main);
   z-index: -1;
+}
+.contacts-shape {
+  // clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%);
+  clip-path: polygon(100% 0, 100% 100%, 50% 100%, 0 50%, 0 0);
 }
 .background-hero {
   position: absolute;
@@ -189,7 +212,7 @@ $fonts: (
   }
   &__img-side {
     width: 55%;
-    border: 1px solid getColor(secondary);
+    // border: 1px solid getColor(secondary);
   }
   &__container-img {
   }
@@ -251,7 +274,7 @@ $fonts: (
     position: absolute;
     bottom: 0;
     left: 50%;
-    transform: translateX(-50%);
+    // transform: translateX(-50%);
   }
   &__skills {
     width: 50%;
@@ -302,10 +325,11 @@ $fonts: (
 }
 
 .projects {
-  display: flex;
+  display: grid;
   margin: auto;
   width: 100%;
-  justify-content: space-between;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 1.3em;
 }
 
 .logo {
@@ -322,7 +346,6 @@ $fonts: (
 }
 
 .project {
-  width: 32%;
   &__btn {
     height: 380px;
     position: relative;
@@ -600,25 +623,24 @@ $fonts: (
   display: flex;
   &__image-side {
     width: 50%;
-    // border: 1px solid getColor(secondary);
-    // border-left: none;
-    border-bottom: 1px solid getColor(secondary);
     padding: 20px;
+    border: 1px solid getColor(secondary);
+    border-left: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
   }
   &__image {
     width: 100%;
     height: 100%;
     display: block;
     object-fit: contain;
-    // transform: scale(1.4);
   }
 }
 
 .field {
   display: block;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.1em;
   &__name {
-    font-size: 1.1em;
     display: block;
   }
   &__textarea {
@@ -629,18 +651,21 @@ $fonts: (
   &__input {
     width: 100%;
     padding: 6px;
-    border: 1px solid getColor(secondary);
+    border: none;
+    border: 1px solid getColor(bg-dark-clear);
+    border-radius: 5px;
+    outline-color: getColor(text);
     &--error {
       border-color: getColor(active-link);
     }
   }
   &__msg {
-    height: 30px;
+    height: 25px;
     display: block;
     color: getColor(active-link);
     display: flex;
     align-items: center;
-    font-size: 0.9em;
+    font-size: 0.7em;
     transition: getTransitions(smooth);
     opacity: 0;
     visibility: hidden;
@@ -660,6 +685,9 @@ $fonts: (
   padding: 20px;
   border: 1px solid getColor(secondary);
   width: 50%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background-color: getColor(main);
   &__fields {
   }
   &__btn-handler {

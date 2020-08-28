@@ -1,7 +1,12 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
 import { RiCodeSSlashLine } from "react-icons/ri"
-import { FaHome, FaPhoneSquareAlt, FaPortrait, FaThList } from "react-icons/fa"
+import {
+  AiOutlineHome,
+  AiOutlineCode,
+  AiOutlinePhone,
+  AiOutlineSolution,
+} from "react-icons/ai"
 
 function Navbar() {
   return (
@@ -17,7 +22,7 @@ function Navbar() {
           className='nav__link'
           activeClassName='nav__link--active'
         >
-          <FaHome className='nav__icon' />
+          <AiOutlineHome className='nav__icon' />
           <span className='nav__name'>Home</span>
         </NavLink>
         <NavLink
@@ -25,7 +30,7 @@ function Navbar() {
           className='nav__link'
           activeClassName='nav__link--active'
         >
-          <FaPortrait className='nav__icon' />
+          <AiOutlineSolution className='nav__icon' />
           <span className='nav__name'>About</span>
         </NavLink>
         <NavLink
@@ -33,7 +38,7 @@ function Navbar() {
           className='nav__link'
           activeClassName='nav__link--active'
         >
-          <FaThList className='nav__icon' />
+          <AiOutlineCode className='nav__icon' />
           <span className='nav__name'>Projects</span>
         </NavLink>
         <NavLink
@@ -41,7 +46,7 @@ function Navbar() {
           className='nav__link'
           activeClassName='nav__link--active'
         >
-          <FaPhoneSquareAlt className='nav__icon' />
+          <AiOutlinePhone className='nav__icon' />
           <span className='nav__name'>Contacts</span>
         </NavLink>
       </div>
