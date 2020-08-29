@@ -5,9 +5,9 @@ import project13 from "../project-imgs/project1.3.png"
 import project21 from "../project-imgs/project2.1.png"
 import project22 from "../project-imgs/project2.2.png"
 import project23 from "../project-imgs/project2.3.png"
-import { FiGithub } from "react-icons/fi"
 import { IoIosRocket } from "react-icons/io"
-import { FaBuysellads } from "react-icons/fa"
+import { FaBuysellads, FaGithub } from "react-icons/fa"
+import { BsLayoutTextSidebarReverse } from "react-icons/bs"
 import Popup from "../components/Popup"
 
 function ProjectsSection() {
@@ -242,7 +242,28 @@ function ProjectsSection() {
         className='project'
         onClick={() => handleSetStatus(index)}
       >
-        <div className='project__bg-hover'></div>
+        <div className='project__links'>
+          <a
+            className='project__link'
+            href={item.github}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <FaGithub className='project__link-icon' />
+          </a>
+          <a
+            className='project__btn-link btn'
+            href={item.demo}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            {item.title}
+          </a>
+        </div>
+        <div className='project__bg-hover'>
+          <BsLayoutTextSidebarReverse className='project__more-icon' />
+          <span className='project__more-text'>More</span>
+        </div>
       </button>
     )
   })
@@ -258,6 +279,7 @@ function ProjectsSection() {
         handleMove={handleMove}
         handleTab={handleTab}
         handleMoveCard={handleMoveCard}
+        handleResetCards={handleResetCards}
       />
       <div
         className={`background ${

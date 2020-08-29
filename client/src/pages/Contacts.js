@@ -101,9 +101,6 @@ function ContactsSection() {
     <div className='wrapper'>
       <h2 className='title'>Contact me</h2>
 
-      <div className='background-shape contacts-shape'></div>
-      <div className='background-hero'></div>
-
       <div className='contacts'>
         <div className='form'>
           <form onSubmit={handleSubmit} className='form__fields'>

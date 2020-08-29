@@ -1,13 +1,20 @@
 import React from "react"
-import { FiGithub } from "react-icons/fi"
+import { FaGithub } from "react-icons/fa"
 import {
   BsChevronLeft,
   BsChevronRight,
   BsArrowLeft,
   BsArrowRight,
+  BsX,
 } from "react-icons/bs"
 
-function Popup({ data, handleMove, handleTab, handleMoveCard }) {
+function Popup({
+  data,
+  handleMove,
+  handleTab,
+  handleMoveCard,
+  handleResetCards,
+}) {
   const images = data.images.map((item) => {
     return (
       <img
@@ -48,7 +55,7 @@ function Popup({ data, handleMove, handleTab, handleMoveCard }) {
       <div className='popup__container'>
         <button
           className={`popup__move-card-btn popup__left-card ${
-            data.disabledMove.left && "popup__move-card-btn--disabled"
+            !data.disabledMove.left && "popup__move-card-btn--active"
           }`}
           onClick={() => handleMoveCard(true)}
         >
@@ -56,7 +63,7 @@ function Popup({ data, handleMove, handleTab, handleMoveCard }) {
         </button>
         <button
           className={`popup__move-card-btn popup__right-card ${
-            data.disabledMove.right && "popup__move-card-btn--disabled"
+            !data.disabledMove.right && "popup__move-card-btn--active"
           }`}
           onClick={() => handleMoveCard(false)}
         >
@@ -79,27 +86,28 @@ function Popup({ data, handleMove, handleTab, handleMoveCard }) {
           <div className='popup__tabs'>{btnTabs}</div>
         </div>
         <div className='popup__info'>
+          <button className='popup__btn-close'>
+            <BsX className='popup__close-icon' onClick={handleResetCards} />
+          </button>
           <h4 className='popup__title'>{data.title}</h4>
           <div className='popup__title-simple'>Technologies</div>
           <div className='popup__tech-links'>{links}</div>
           <div className='popup__links project__links'>
             <a
-              className='project__github'
+              className='project__link'
               href={data.github}
               target='_blank'
               rel='noopener noreferrer'
             >
-              <FiGithub />
+              <FaGithub className='project__link-icon' />
             </a>
             <a
-              className='project__demo'
+              className='project__btn-link btn btn-primary'
               href={data.demo}
               target='_blank'
               rel='noopener noreferrer'
             >
-              <span className='project__body-arrow'></span>
-              <span className='project__tip-arrow'></span>
-              <span className='project__link'>{data.demo}</span>
+              {data.title}
             </a>
           </div>
         </div>

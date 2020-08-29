@@ -100,7 +100,8 @@ $fonts: (
   opacity: 0;
   visibility: hidden;
   transition: getTransitions(smooth);
-  background-color: getColor(bg-dark);
+  background-color: getColor(bg-dark-clear);
+  backdrop-filter: opacity(0.4);
   &--active {
     opacity: 1;
     visibility: visible;
@@ -113,11 +114,6 @@ $fonts: (
   font-weight: normal;
   color: getColor(light-text);
   font-family: getFont(second);
-}
-.title-simple {
-  padding: 10px 0;
-  text-align: center;
-  font-size: 1.3em;
 }
 
 .btn {
@@ -251,83 +247,12 @@ $fonts: (
   }
 }
 
-// .about {
-//   display: flex;
-//   border: 1px solid getColor(secondary);
-//   padding: 20px;
-//   margin: auto;
-//   width: 100%;
-//   &__experience {
-//     width: 50%;
-//     margin-right: 20px;
-//     padding-bottom: 76px;
-//     position: relative;
-//   }
-//   &__info {
-//     margin-bottom: 2em;
-//   }
-//   &__paragraph {
-//     border: 1px solid getColor(secondary);
-//     padding: 15px;
-//     border-radius: 5px;
-//   }
-//   &__btn {
-//     position: absolute;
-//     bottom: 0;
-//     left: 50%;
-//   }
-//   &__skills {
-//     width: 50%;
-//   }
-//   &__container-skills {
-//     border: 1px solid getColor(secondary);
-//     padding: 15px;
-//     border-radius: 5px;
-//   }
-// }
-// .skill {
-//   display: flex;
-//   align-items: center;
-//   margin-bottom: 0.4em;
-//   &:last-child {
-//     margin-bottom: 0px;
-//   }
-//   &__container-counter {
-//     width: 70px;
-//     text-align: center;
-//     position: relative;
-//     margin-right: 10px;
-//   }
-//   &__dashe {
-//     position: absolute;
-//     top: 50%;
-//     left: 0;
-//     right: 0;
-//     border-top: 1px dashed getColor(secondary);
-//     z-index: -1;
-//   }
-//   &__counter {
-//     width: 30px;
-//     height: 30px;
-//     line-height: 29px;
-//     border: 1px dotted getColor(secondary);
-//     border-radius: 50%;
-//     background-color: getColor(main);
-//     display: inline-block;
-//     font-size: 0.7em;
-//     font-weight: bold;
-//     font-family: getFont(second);
-//     color: getColor(light-text);
-//   }
-// }
 .about {
   display: flex;
   margin: auto;
   width: 100%;
   min-height: 65vh;
   border: 1px solid getColor(secondary);
-
-  align-items: center;
   &__info {
     width: 50%;
     display: flex;
@@ -353,14 +278,16 @@ $fonts: (
   }
   &__container {
     width: 50%;
+    align-self: center;
     padding: 0px 14px;
     position: relative;
+    // border: 1px solid black;
     &:first-child {
       padding-right: 7px;
     }
     &:last-child {
       padding-left: 7px;
-      padding-bottom: 70px;
+      padding-bottom: 75px;
     }
   }
   &__title {
@@ -433,9 +360,9 @@ $fonts: (
 }
 
 .project {
-  background-color: white;
   overflow: hidden;
-  // transition: getTransitions(smooth);
+  transition: getTransitions(smooth);
+  border-radius: 5px;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -446,17 +373,27 @@ $fonts: (
   &:hover {
     .project__bg-hover {
       width: 100%;
-      // opacity: 1;
     }
   }
   &__bg-hover {
     position: absolute;
-    background-color: getColor(bg-dark);
+    background-color: getColor(bg-light);
     transition: getTransitions(smooth);
     width: 0%;
     top: 0;
     bottom: 0;
-    // opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: getColor(bg-dark-clear);
+  }
+  &__more-icon {
+    font-size: 3em;
+  }
+  &__more-text {
+    font-weight: bold;
   }
   &:nth-child(1) {
     grid-column: 1/2;
@@ -474,57 +411,56 @@ $fonts: (
     grid-row: 2/3;
     background-image: url("./project-imgs/project1.1.png");
   }
-  // &__img {
-  //   width: 100%;
-  //   height: 100%;
-  //   display: block;
-  //   object-fit: cover;
-  //   object-position: center;
-  //   transition: getTransitions(smooth);
-  //   &:hover {
-  //     filter: grayscale(1);
-  //   }
-  // }
   &__links {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    // border-top-right-radius: 50px;
+    background-color: getColor(bg-dark-clear);
+    // border: 1px solid black;
     display: flex;
     align-items: center;
-    // border: 1px solid getColor(secondary);
-    border-top: 1px dashed getColor(secondary);
-    // border-radius: 50px;
+    justify-content: space-between;
     padding: 10px;
-    // margin-top: 1.8em;
-    // transform: scale(0.9);
+    z-index: 1;
+    backdrop-filter: blur(3px);
+    border-top: 1px solid getColor(bg-light);
   }
-  &__github {
-    width: 50px;
-    // position: relative;
-    // display: block;
-    height: 50px;
-    border: 1px solid getColor(text);
-    // background-color: getColor(text);
-    // text-decoration: none;
-    // line-height: 56px;
-    color: getColor(text);
-
-    // text-align: center;
+  &__btn-link {
+    // color: getColor(secondary);
+    font-size: 0.9em;
+    padding: 7px 10px;
+    border: 1px solid getColor(bg-light);
+    color: white;
+  }
+  &__link {
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
+    box-shadow: inset 0px 0px 7px rgba(0, 0, 0, 0.2);
+    border: 1px solid getColor(bg-light);
+    color: white;
     display: flex;
+    background-color: getColor(bg-dark-clear);
+    text-decoration: none;
+    // color: getColor(text);
+    margin-right: 10px;
+    transition: getTransitions(smooth);
+    // border-bottom-color: getColor(active-link);
+    &:hover {
+      border-color: getColor(active-link);
+      // box-shadow: inset 0px 0px 7px rgba(0, 0, 0, 0.2),
+      //   0px 0px 6px getColor(active-link);
+    }
+    &:active {
+      transform: scale(0.9);
+    }
   }
-  &__github-icon {
+  &__link-icon {
     margin: auto;
-    font-size: 1.2em;
-  }
-  &__demo {
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
-    margin-left: 15px;
-    // text-decoration: none;
-    // color:
-    // display: block;
-    // font-size: 1.2em;
-    // padding: 10px;
-    // font-family: getFont(second);
+    font-size: 1.3em;
+    filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.4));
   }
 }
 
@@ -540,6 +476,9 @@ $fonts: (
   opacity: 0;
   visibility: hidden;
   padding: 0px 50px;
+  .popup__move-card-btn--active {
+    visibility: hidden;
+  }
   &__container {
     display: flex;
     position: relative;
@@ -548,6 +487,9 @@ $fonts: (
     opacity: 1;
     visibility: visible;
     transform: translate(-50%, -50%) scale(1);
+    .popup__move-card-btn--active {
+      visibility: visible;
+    }
   }
   &__move-card-btn {
     position: absolute;
@@ -561,13 +503,14 @@ $fonts: (
     background-color: transparent;
     line-height: 52px;
     text-align: center;
-    opacity: 1;
+    visibility: hidden;
+    opacity: 0;
     font-size: 1.3em;
-    visibility: visible;
+
     transition: getTransitions(smooth);
-    &--disabled {
-      opacity: 0;
-      visibility: hidden;
+    &--active {
+      opacity: 1;
+      visibility: visible;
     }
     &:hover {
       background-color: getColor(bg-light-clear);
@@ -670,10 +613,36 @@ $fonts: (
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
   }
+  &__btn-close {
+    border: 1px solid getColor(secondary);
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    background-color: transparent;
+    color: getColor(text);
+    transition: getTransitions(smooth);
+    border-radius: 3px;
+    &:hover {
+      border-color: getColor(active-link);
+      color: getColor(active-link);
+    }
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+  &__close-icon {
+    margin: auto;
+  }
   &__title {
     font-size: 1.2em;
     border-bottom: 1px dashed getColor(secondary);
     padding-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   &__title-simple {
     font-family: getFont(second);
@@ -697,13 +666,33 @@ $fonts: (
     font-size: 0.8em;
     margin-right: 5px;
     margin-bottom: 5px;
+    transition: getTransitions(smooth);
+    &:hover {
+      border-color: getColor(active-link);
+    }
+    &:active {
+      transform: scale(0.9);
+    }
   }
   &__links {
-    position: absolute;
+    border: 1px solid getColor(secondary);
+    background-color: transparent;
+    backdrop-filter: none;
     bottom: 20px;
+    border-radius: 5px;
     left: 20px;
     right: 20px;
-    margin: 0;
+    .project__link {
+      border-color: getColor(bg-dark-clear);
+      &:hover {
+        border-color: getColor(active-link);
+      }
+    }
+    .project__btn-link {
+      // border-color: getColor(secondary);
+      // padding: 13px;
+      // color: getColor(text);
+    }
   }
 }
 
@@ -711,13 +700,12 @@ $fonts: (
   width: 100%;
   margin: auto;
   display: flex;
+  min-height: 65vh;
   &__image-side {
     width: 50%;
     padding: 20px;
     border: 1px solid getColor(secondary);
     border-left: none;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
   }
   &__image {
     width: 100%;
@@ -742,11 +730,16 @@ $fonts: (
     width: 100%;
     padding: 6px;
     border: none;
-    border: 1px solid getColor(bg-dark-clear);
-    border-radius: 5px;
-    outline-color: getColor(text);
+    border: 1px solid transparent;
+    border-color: getColor(secondary);
+    outline: none;
     &--error {
-      border-color: getColor(active-link);
+      border-bottom-color: getColor(active-link);
+    }
+    &:focus {
+      outline-style: solid;
+      outline-color: getColor(bg-dark-clear);
+      outline-width: 4px;
     }
   }
   &__msg {
@@ -759,6 +752,7 @@ $fonts: (
     transition: getTransitions(smooth);
     opacity: 0;
     visibility: hidden;
+    justify-content: flex-end;
     &--active {
       opacity: 1;
       visibility: visible;
@@ -775,9 +769,12 @@ $fonts: (
   padding: 20px;
   border: 1px solid getColor(secondary);
   width: 50%;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  // border-top-left-radius: 5px;
+  // border-bottom-left-radius: 5px;
   background-color: getColor(main);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   &__fields {
   }
   &__btn-handler {
@@ -789,14 +786,15 @@ $fonts: (
     padding-top: 0.5em;
   }
   &__link {
-    width: 56px;
-    height: 56px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     border: 1px solid getColor(text);
-    font-size: 1.3em;
+    font-size: 1.2em;
     color: getColor(text);
     margin-right: 10px;
+    // filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.4));
   }
   &__icon {
     margin: auto;
