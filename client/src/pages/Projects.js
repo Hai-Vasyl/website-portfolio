@@ -21,10 +21,10 @@ function ProjectsSection() {
       github: "https://github.com/Hai-Vasyl/ad-stack",
       demo: "https://ad-stack.herokuapp.com",
       title: (
-        <span className='logo'>
-          <FaBuysellads className='logo__icon' />
-          <span className='logo__name'>AD-Stack</span>
-        </span>
+        <>
+          <FaBuysellads className='btn__icon' />
+          <span className='btn__name'>AD-Stack</span>
+        </>
       ),
       technologies: [
         {
@@ -59,10 +59,10 @@ function ProjectsSection() {
       github: "https://github.com/Hai-Vasyl/rocket-delivery",
       demo: "https://rocket-delivary.herokuapp.com",
       title: (
-        <span className='logo'>
-          <IoIosRocket className='logo__icon' />
-          <span className='logo__name'>Rocket-Delivery</span>
-        </span>
+        <>
+          <IoIosRocket className='btn__icon' />
+          <span className='btn__name'>Rocket-Delivery</span>
+        </>
       ),
       technologies: [
         {
@@ -97,10 +97,10 @@ function ProjectsSection() {
       github: "https://github.com/Hai-Vasyl/some-ither",
       demo: "https://ad-stack.herokuapp.com",
       title: (
-        <span className='logo'>
-          <FaBuysellads className='logo__icon' />
-          <span className='logo__name'>AD-Stack</span>
-        </span>
+        <>
+          <FaBuysellads className='btn__icon' />
+          <span className='btn__name'>AD-Stack</span>
+        </>
       ),
       technologies: [
         {
@@ -237,36 +237,13 @@ function ProjectsSection() {
 
   const cards = projects.map((item, index) => {
     return (
-      <div key={item.github} className='project'>
-        <button className='project__btn' onClick={() => handleSetStatus(index)}>
-          <img
-            className='project__img'
-            src={item.images[0].img}
-            alt='projectImg'
-          />
-          <span className='project__name'>{item.title}</span>
-        </button>
-        <div className='project__links'>
-          <a
-            className='project__github'
-            href={item.github}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <FiGithub />
-          </a>
-          <a
-            className='project__demo'
-            href={item.demo}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <span className='project__body-arrow'></span>
-            <span className='project__tip-arrow'></span>
-            <span className='project__link'>{item.demo}</span>
-          </a>
-        </div>
-      </div>
+      <button
+        key={item.github}
+        className='project'
+        onClick={() => handleSetStatus(index)}
+      >
+        <div className='project__bg-hover'></div>
+      </button>
     )
   })
 
