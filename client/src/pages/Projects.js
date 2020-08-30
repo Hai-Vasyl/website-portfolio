@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import project11 from "../project-imgs/project1.1.png"
 import project12 from "../project-imgs/project1.2.png"
 import project13 from "../project-imgs/project1.3.png"
@@ -9,8 +9,15 @@ import { IoIosRocket } from "react-icons/io"
 import { FaBuysellads, FaGithub } from "react-icons/fa"
 import { BsLayoutTextSidebarReverse } from "react-icons/bs"
 import Popup from "../components/Popup"
+import { Context } from "../context/context"
+import { TOGGLE_POPUP_MENU } from "../context/menu/menuTypes"
 
 function ProjectsSection() {
+  const {
+    menu: { popup },
+    dispatchMenu,
+  } = useContext(Context)
+
   const [projects, setProjects] = useState([
     {
       images: [
@@ -141,6 +148,7 @@ function ProjectsSection() {
 
   const handleSetStatus = (index) => {
     setProjects(mapStatusReducer(projects, index))
+    dispatchMenu({ type: TOGGLE_POPUP_MENU })
   }
 
   const handleMove = (isLeft, images) => {
@@ -233,6 +241,7 @@ function ProjectsSection() {
         return item
       })
     )
+    dispatchMenu({ type: TOGGLE_POPUP_MENU })
   }
 
   const cards = projects.map((item, index) => {
@@ -276,17 +285,12 @@ function ProjectsSection() {
 
       <Popup
         data={activeCard}
+        popup={popup}
         handleMove={handleMove}
         handleTab={handleTab}
         handleMoveCard={handleMoveCard}
         handleResetCards={handleResetCards}
       />
-      <div
-        className={`background ${
-          activeCard.images.length && "background--active"
-        }`}
-        onClick={handleResetCards}
-      ></div>
 
       <div className='projects'>{cards}</div>
     </div>

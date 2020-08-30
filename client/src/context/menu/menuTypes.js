@@ -1,0 +1,3 @@
+export const TOGGLE_DROP_MENU = "TOGGLE_DROP_MENU"
+export const TOGGLE_POPUP_MENU = "TOGGLE_POPUP_MENU"
+export const RESET_MENU = "RESET_MENU"

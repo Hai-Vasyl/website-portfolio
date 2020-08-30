@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import { NavLink } from "react-router-dom"
 import { RiCodeSSlashLine } from "react-icons/ri"
 import {
@@ -7,8 +7,15 @@ import {
   AiOutlinePhone,
   AiOutlineSolution,
 } from "react-icons/ai"
+import { Context } from "../context/context"
+import { TOGGLE_DROP_MENU } from "../context/menu/menuTypes"
 
 function Navbar() {
+  const {
+    menu: { drop },
+    dispatchMenu,
+  } = useContext(Context)
+
   return (
     <div className='nav'>
       <div className='nav__menu'>
@@ -51,7 +58,10 @@ function Navbar() {
             <span className='nav__name'>Contacts</span>
           </NavLink>
         </div>
-        <button className='nav__btn-menu'>
+        <button
+          className={`nav__btn-menu ${drop && "nav__btn-menu--drop"}`}
+          onClick={() => dispatchMenu({ type: TOGGLE_DROP_MENU })}
+        >
           <span className='nav__line'></span>
           <span className='nav__line'></span>
           <span className='nav__line'></span>

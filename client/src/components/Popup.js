@@ -10,6 +10,7 @@ import {
 
 function Popup({
   data,
+  popup,
   handleMove,
   handleTab,
   handleMoveCard,
@@ -51,7 +52,7 @@ function Popup({
   })
 
   return (
-    <div className={`popup ${data.images.length && "popup--active"}`}>
+    <div className={`popup ${popup && "popup--active"}`}>
       <div className='popup__container'>
         <button
           className={`popup__move-card-btn popup__left-card ${
