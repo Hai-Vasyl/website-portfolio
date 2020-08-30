@@ -1,19 +1,21 @@
 $colors: (
-  primary: blue,
   secondary: rgb(208, 208, 208),
   accent: white,
   text: #333,
+  success: rgb(103, 206, 103),
   active-link: #f80e0e,
   main: #f5f5f5,
   light-text: lighten(#333, 50%),
   bg-light: rgba(255, 255, 255, 0.3),
   bg-dark: rgba(51, 51, 51, 0.5),
   bg-lighter: rgba(255, 255, 255, 0.7),
+  bg-dark-darken: rgba(51, 51, 51, 0.8),
   bg-light-clear: rgba(255, 255, 255, 0.1),
   bg-dark-clear: rgba(51, 51, 51, 0.2),
 );
 $transitions: (
   smooth: 0.17s ease,
+  spin: 1s linear infinite,
 );
 $fonts: (
   main: (
@@ -45,9 +47,15 @@ $fonts: (
   z-index: 9;
   &__menu {
     width: 1400px;
+    height: 50px;
     max-width: 100%;
     padding: 0px 50px;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  &__main-menu {
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -61,11 +69,18 @@ $fonts: (
     padding: 10px 12px;
     border: 1px solid transparent;
     transform: translateY(1px);
+    transition: getTransitions(smooth);
+    &:hover {
+      border-bottom-color: getColor(active-link);
+    }
     &--active {
       color: getColor(active-link);
       border-left-color: getColor(secondary);
       border-right-color: getColor(secondary);
       border-bottom-color: getColor(main);
+      &:hover {
+        border-bottom-color: getColor(main);
+      }
     }
   }
   &__logo {
@@ -74,6 +89,7 @@ $fonts: (
     font-weight: bold;
     font-size: 1.4em;
     padding: 0px 12px;
+    border: none;
     .nav__icon {
       font-size: 1.2em;
       color: getColor(active-link);
@@ -88,6 +104,56 @@ $fonts: (
   &__name {
     margin-left: 6px;
   }
+  &__btn-menu {
+    border: 1px solid getColor(secondary);
+    // width: 40px;
+    // height: 40px;
+  }
+  &__line {
+    display: block;
+    width: 27px;
+    height: 5px;
+    margin-top: 5px;
+    background-color: getColor(text);
+    &:first-child {
+      margin-top: 0px;
+    }
+  }
+}
+
+@media (max-width: 830px) {
+  .nav {
+    &__menu {
+      position: relative;
+    }
+    &__main-menu {
+      flex-direction: column;
+      position: absolute;
+      top: 50px;
+      width: 220px;
+      max-width: 100%;
+      border: 1px solid getColor(secondary);
+      align-items: stretch;
+      padding: 10px 0;
+      background-color: getColor(main);
+    }
+    &__link {
+      transform: none;
+      transition: getTransitions(smooth);
+      transform: translateX(-1px);
+      &:hover {
+        border-left-color: getColor(active-link);
+        border-bottom-color: transparent;
+      }
+      &--active {
+        color: getColor(active-link);
+        border-color: transparent;
+        &:hover {
+          border-color: transparent;
+        }
+      }
+    }
+  }
 }
 
 .background {
@@ -100,8 +166,7 @@ $fonts: (
   opacity: 0;
   visibility: hidden;
   transition: getTransitions(smooth);
-  background-color: getColor(bg-dark-clear);
-  backdrop-filter: opacity(0.4);
+  background-color: getColor(bg-dark-darken);
   &--active {
     opacity: 1;
     visibility: visible;
@@ -163,8 +228,7 @@ $fonts: (
   width: 1300px;
   max-width: 100%;
   padding: 70px 50px;
-  // border-left: 1px dashed getColor(secondary);
-  // border-right: 1px dashed getColor(secondary);
+  padding-bottom: 7vh;
   display: flex;
   flex-direction: column;
 }
@@ -218,7 +282,7 @@ $fonts: (
     height: 100%;
     object-fit: contain;
     display: block;
-    transform: scale(1.2);
+    transform: scale(1.15);
     filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.4));
   }
   &__title {
@@ -362,7 +426,7 @@ $fonts: (
 .project {
   overflow: hidden;
   transition: getTransitions(smooth);
-  border-radius: 5px;
+  border-radius: 3px;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -701,6 +765,7 @@ $fonts: (
   margin: auto;
   display: flex;
   min-height: 65vh;
+
   &__image-side {
     width: 50%;
     padding: 20px;
@@ -733,6 +798,7 @@ $fonts: (
     border: 1px solid transparent;
     border-color: getColor(secondary);
     outline: none;
+    transition: getTransitions(smooth);
     &--error {
       border-bottom-color: getColor(active-link);
     }
@@ -769,12 +835,11 @@ $fonts: (
   padding: 20px;
   border: 1px solid getColor(secondary);
   width: 50%;
-  // border-top-left-radius: 5px;
-  // border-bottom-left-radius: 5px;
   background-color: getColor(main);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
   &__fields {
   }
   &__btn-handler {
@@ -794,12 +859,76 @@ $fonts: (
     font-size: 1.2em;
     color: getColor(text);
     margin-right: 10px;
-    // filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.4));
+    transition: getTransitions(smooth);
+    &:hover {
+      border-color: getColor(active-link);
+    }
+    &:active {
+      transform: scale(0.9);
+    }
   }
   &__icon {
     margin: auto;
   }
   &__submit {
     margin-left: auto;
+    &--disabled {
+      background-color: transparent;
+      color: getColor(success);
+      border-color: getColor(success);
+      cursor: default;
+      &:hover {
+        box-shadow: none;
+        border-color: getColor(success);
+        .btn__icon {
+          transform: none;
+          opacity: 1;
+        }
+        .btn__name {
+          transform: none;
+        }
+      }
+      &:active {
+        transform: none;
+      }
+    }
+  }
+}
+
+.loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  background-color: getColor(bg-lighter);
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  transition: getTransitions(smooth);
+  &--load {
+    opacity: 1;
+    visibility: visible;
+  }
+  &__spinner {
+    width: 110px;
+    height: 110px;
+    border: 9px solid getColor(bg-lighter);
+    border-left-color: getColor(bg-dark);
+    box-shadow: inset 0px 0px 4px rgba(130, 52, 52, 0.1),
+      0px 0px 4px rgba(130, 52, 52, 0.1);
+    border-radius: 50%;
+    margin: auto;
+    animation: spin getTransitions(spin);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

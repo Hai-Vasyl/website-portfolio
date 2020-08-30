@@ -3,20 +3,27 @@ import axios from "axios"
 import { RiMailSendLine } from "react-icons/ri"
 import { FaLinkedinIn, FaGithub } from "react-icons/fa"
 import { ImWarning } from "react-icons/im"
+import { BsCheck } from "react-icons/bs"
 import contactsImage from "../images/undraw_delivery_address_03n0.svg"
 
 function ContactsSection() {
-  const [form, setForm] = useState([
+  const initialFrom = [
     { param: "name", name: "Contact name", value: "", msg: "" },
     { param: "email", name: "Email address", value: "", msg: "" },
     { param: "message", name: "Message", value: "", msg: "" },
-  ])
+  ]
+  const [form, setForm] = useState(initialFrom)
   const [load, setLoad] = useState(false)
+  const [isPosted, setIsPosted] = useState(false)
 
   const handleSubmit = async (e) => {
     try {
       e.preventDefault()
       let isEmptyField = false
+
+      if (isPosted) {
+        return
+      }
 
       setForm(
         form.map((item) => {
@@ -32,13 +39,16 @@ function ContactsSection() {
         return
       }
 
+      setLoad(true)
       const [name, email, message] = form
-      const res = await axios({
+      await axios({
         url: "/post-email",
         method: "post",
         data: { name: name.value, email: email.value, message: message.value },
       })
-      console.log(res.data)
+      setLoad(false)
+      setIsPosted(true)
+      setForm(initialFrom)
     } catch (error) {
       const { errors } = error.response.data
       setForm(
@@ -51,6 +61,7 @@ function ContactsSection() {
           return item
         })
       )
+      setLoad(false)
     }
   }
 
@@ -103,6 +114,9 @@ function ContactsSection() {
 
       <div className='contacts'>
         <div className='form'>
+          <div className={`loader ${load && "loader--load"}`}>
+            <div className='loader__spinner'></div>
+          </div>
           <form onSubmit={handleSubmit} className='form__fields'>
             {fields}
             <button className='form__btn-handler'></button>
@@ -125,11 +139,19 @@ function ContactsSection() {
               <FaLinkedinIn className='form__icon' />
             </a>
             <button
-              className='form__submit btn btn-primary'
+              className={`form__submit btn btn-primary ${
+                isPosted && "form__submit--disabled"
+              }`}
               onClick={handleSubmit}
             >
-              <RiMailSendLine className='btn__icon' />
-              <span className='btn__name'>Submit</span>
+              {isPosted ? (
+                <BsCheck className='btn__icon' />
+              ) : (
+                <RiMailSendLine className='btn__icon' />
+              )}
+              <span className='btn__name'>
+                {isPosted ? "Posted" : "Submit"}
+              </span>
             </button>
           </div>
         </div>
