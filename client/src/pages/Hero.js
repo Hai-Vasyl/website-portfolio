@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { AiOutlineCode, AiOutlineSolution } from "react-icons/ai"
 import mainImage from "../images/undraw_on_the_office_fbfs 1.svg"
 
-function HeroPage() {
+function Hero() {
   return (
     <div className='wrapper'>
       <div className='background-shape'></div>
@@ -41,4 +41,4 @@ function HeroPage() {
   )
 }
 
-export default HeroPage
+export default Hero

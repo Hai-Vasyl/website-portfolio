@@ -54,6 +54,7 @@ $fonts: (
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    background-color: getColor(main);
   }
   &__main-menu {
     display: flex;
@@ -105,20 +106,31 @@ $fonts: (
     margin-left: 6px;
   }
   &__btn-menu {
-    border-right: 1px solid getColor(secondary);
-    border-left: 1px solid getColor(secondary);
-    padding: 0px 20px;
+    border-right: 1px solid transparent;
+    border-left: 1px solid transparent;
+    padding: 0px 10px;
     align-self: stretch;
     background-color: transparent;
-    &--drop {
-      border-color: red;
+    display: none;
+    &--active {
+      border-color: getColor(secondary);
+      .nav__line:nth-child(1) {
+        transform: rotate(-45deg) translate(-7px, 7px);
+      }
+      .nav__line:nth-child(2) {
+        opacity: 0;
+      }
+      .nav__line:nth-child(3) {
+        transform: rotate(45deg) translate(-7px, -7px);
+      }
     }
   }
   &__line {
     display: block;
     width: 27px;
-    height: 3px;
+    height: 2px;
     margin-top: 8px;
+    transition: getTransitions(smooth);
     background-color: getColor(text);
     &:first-child {
       margin-top: 0px;
@@ -126,43 +138,8 @@ $fonts: (
   }
 }
 
-@media (max-width: 830px) {
-  .nav {
-    &__menu {
-      position: relative;
-    }
-    &__main-menu {
-      flex-direction: column;
-      position: absolute;
-      top: 50px;
-      width: 220px;
-      max-width: 100%;
-      border: 1px solid getColor(secondary);
-      align-items: stretch;
-      padding: 10px 0;
-      background-color: getColor(main);
-    }
-    &__link {
-      transform: none;
-      transition: getTransitions(smooth);
-      transform: translateX(-1px);
-      &:hover {
-        border-left-color: getColor(active-link);
-        border-bottom-color: transparent;
-      }
-      &--active {
-        color: getColor(active-link);
-        border-color: transparent;
-        &:hover {
-          border-color: transparent;
-        }
-      }
-    }
-  }
-}
-
 .background {
-  position: absolute;
+  position: fixed;
   top: 51px;
   left: 0;
   right: 0;
@@ -229,7 +206,7 @@ $fonts: (
 
 .wrapper {
   margin: 0 auto;
-  height: 100vh;
+  min-height: 100vh;
   width: 1300px;
   max-width: 100%;
   padding: 70px 50px;
@@ -237,20 +214,16 @@ $fonts: (
   display: flex;
   flex-direction: column;
 }
+
 .background-shape {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  // clip-path: polygon(100% 0, 50% 100%, 0 100%, 0 0);
   clip-path: polygon(100% 0, 100% 50%, 50% 100%, 0 100%, 0 0);
   background-color: getColor(main);
   z-index: -1;
-}
-.contacts-shape {
-  // clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%);
-  clip-path: polygon(100% 0, 100% 100%, 50% 100%, 0 50%, 0 0);
 }
 .background-hero {
   position: absolute;
@@ -278,7 +251,6 @@ $fonts: (
   }
   &__img-side {
     width: 55%;
-    // border: 1px solid getColor(secondary);
   }
   &__container-img {
   }
@@ -320,6 +292,7 @@ $fonts: (
   display: flex;
   margin: auto;
   width: 100%;
+
   min-height: 65vh;
   border: 1px solid getColor(secondary);
   &__info {
@@ -327,30 +300,22 @@ $fonts: (
     display: flex;
     border-right: 1px solid getColor(secondary);
     padding: 14px 0;
-    // border-radius: 5px;
-    // transform: scale(1.05);
   }
   &__image-side {
     width: 50%;
     padding: 20px;
-    // border: 1px solid getColor(secondary);
-    // border-left: none;
-    // background-color: getColor(bg-lighter);
-    // transform: scale(0);
   }
   &__image {
     width: 100%;
     height: 100%;
     display: block;
     object-fit: contain;
-    // filter: drop-shadow(0px 7px 10px getColor(bg-dark));
   }
   &__container {
     width: 50%;
     align-self: center;
     padding: 0px 14px;
     position: relative;
-    // border: 1px solid black;
     &:first-child {
       padding-right: 7px;
     }
@@ -364,8 +329,6 @@ $fonts: (
     align-items: center;
     justify-content: center;
     font-size: 1.2em;
-    // padding: 4px 0;
-    // border: 1px solid getColor(secondary);
   }
   &__title-icon {
     color: getColor(bg-dark);
@@ -840,7 +803,6 @@ $fonts: (
   padding: 20px;
   border: 1px solid getColor(secondary);
   width: 50%;
-  background-color: getColor(main);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -935,5 +897,148 @@ $fonts: (
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1050px) {
+  .nav {
+    &__link {
+      padding: 11px 12px;
+      &--active {
+        border-bottom-color: getColor(main);
+      }
+    }
+  }
+  .nav,
+  .wrapper {
+    font-size: 0.9em;
+  }
+
+  .about {
+    flex-direction: column-reverse;
+    align-items: center;
+    border: none;
+    &__info {
+      width: 100%;
+      border-right: none;
+    }
+    &__image-side {
+      width: 80%;
+    }
+  }
+
+  .contacts {
+    flex-direction: column-reverse;
+    align-items: center;
+    &__image-side {
+      width: 70%;
+      border: none;
+    }
+  }
+  .form {
+    border: none;
+    width: 100%;
+  }
+  .loader {
+    &__spinner {
+      width: 100px;
+      height: 100px;
+      border-width: 8px;
+    }
+  }
+}
+
+@media (max-width: 830px) {
+  .nav {
+    &__menu {
+      position: relative;
+    }
+    &__main-menu {
+      flex-direction: column;
+      position: absolute;
+      top: 50px;
+      width: 220px;
+      max-width: 100%;
+      border: 1px solid getColor(secondary);
+      align-items: stretch;
+      padding: 10px 0;
+      background-color: getColor(main);
+      opacity: 0;
+      visibility: hidden;
+      transition: getTransitions(smooth);
+      transform: translateY(-50%);
+      z-index: -1;
+      &--drop {
+        opacity: 1;
+        transform: translateY(0%);
+        visibility: visible;
+      }
+    }
+    &__link {
+      transform: none;
+      transition: getTransitions(smooth);
+      transform: translate(-1px, 0px);
+      padding: 12px 12px;
+
+      &:hover {
+        border-left-color: getColor(active-link);
+        border-bottom-color: transparent;
+      }
+      &--active {
+        color: getColor(active-link);
+        border-color: transparent;
+        &:hover {
+          border-color: transparent;
+        }
+      }
+    }
+    &__btn-menu {
+      display: block;
+    }
+  }
+  .hero {
+    flex-direction: column-reverse;
+    &__content {
+      width: 100%;
+    }
+    &__img-side {
+      width: 80%;
+    }
+    &__image {
+      transform: none;
+    }
+  }
+  .background-shape {
+    display: none;
+  }
+  .background-hero {
+    display: none;
+  }
+}
+
+@media (max-width: 550px) {
+  .nav {
+    &__menu {
+      padding: 0px 20px;
+    }
+  }
+  .wrapper {
+    padding: 70px 20px;
+    padding-bottom: 7vh;
+  }
+  .hero {
+    &__img-side {
+      width: 100%;
+    }
+  }
+  .about {
+    &__image-side {
+      width: 100%;
+    }
+  }
+  .contacts {
+    &__image-side {
+      width: 80%;
+    }
   }
 }

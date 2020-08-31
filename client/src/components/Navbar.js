@@ -8,7 +8,7 @@ import {
   AiOutlineSolution,
 } from "react-icons/ai"
 import { Context } from "../context/context"
-import { TOGGLE_DROP_MENU } from "../context/menu/menuTypes"
+import { TOGGLE_DROP_MENU, RESET_MENU } from "../context/menu/menuTypes"
 
 function Navbar() {
   const {
@@ -23,7 +23,10 @@ function Navbar() {
           <RiCodeSSlashLine className='nav__icon' />
           <span className='nav__name'>Hai-Vasyl</span>
         </NavLink>
-        <div className='nav__main-menu'>
+        <div
+          className={`nav__main-menu ${drop && "nav__main-menu--drop"}`}
+          onClick={() => dispatchMenu({ type: RESET_MENU })}
+        >
           <NavLink
             exact
             to='/'
@@ -59,7 +62,7 @@ function Navbar() {
           </NavLink>
         </div>
         <button
-          className={`nav__btn-menu ${drop && "nav__btn-menu--drop"}`}
+          className={`nav__btn-menu ${drop && "nav__btn-menu--active"}`}
           onClick={() => dispatchMenu({ type: TOGGLE_DROP_MENU })}
         >
           <span className='nav__line'></span>

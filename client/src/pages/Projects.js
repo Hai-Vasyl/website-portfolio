@@ -12,7 +12,7 @@ import Popup from "../components/Popup"
 import { Context } from "../context/context"
 import { TOGGLE_POPUP_MENU } from "../context/menu/menuTypes"
 
-function ProjectsSection() {
+function Projects() {
   const {
     menu: { popup },
     dispatchMenu,
@@ -297,4 +297,4 @@ function ProjectsSection() {
   )
 }
 
-export default ProjectsSection
+export default Projects

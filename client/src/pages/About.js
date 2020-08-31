@@ -7,7 +7,7 @@ import {
   AiOutlineRead,
 } from "react-icons/ai"
 
-function AboutSection() {
+function About() {
   const skills = {
     frontend: [
       "HTML/HTML5",
@@ -142,4 +142,4 @@ function AboutSection() {
   )
 }
 
-export default AboutSection
+export default About

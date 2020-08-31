@@ -6,7 +6,7 @@ import { ImWarning } from "react-icons/im"
 import { BsCheck } from "react-icons/bs"
 import contactsImage from "../images/undraw_delivery_address_03n0.svg"
 
-function ContactsSection() {
+function Contacts() {
   const initialFrom = [
     { param: "name", name: "Contact name", value: "", msg: "" },
     { param: "email", name: "Email address", value: "", msg: "" },
@@ -168,4 +168,4 @@ function ContactsSection() {
   )
 }
 
-export default ContactsSection
+export default Contacts
