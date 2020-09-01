@@ -6,6 +6,7 @@ import {
   AiOutlineAudit,
   AiOutlineRead,
 } from "react-icons/ai"
+import file from "../Vasyl Hai hai.vasyl20@gmail.com.pdf"
 
 function About() {
   const skills = {
@@ -77,8 +78,9 @@ function About() {
             </p>
             <a
               className='about__btn-resume btn btn-primary'
-              href='../Vasyl Hai hai.vasyl20@gmail.com.pdf'
-              // target='_blank'
+              href={file}
+              target='_blank'
+              rel='noopener noreferrer'
               download
             >
               <ImDownload2 className='btn__icon' />
