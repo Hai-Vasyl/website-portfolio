@@ -77,8 +77,8 @@ function About() {
             </p>
             <a
               className='about__btn-resume btn btn-primary'
-              href='../Vasyl Hai hai.vasyl2000@gmail.com.pdf'
-              target='_blank'
+              href='../Vasyl Hai hai.vasyl20@gmail.com.pdf'
+              // target='_blank'
               download
             >
               <ImDownload2 className='btn__icon' />

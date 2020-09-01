@@ -382,6 +382,9 @@ $fonts: (
     left: 50%;
     bottom: 10px;
     transform: translate(-50%);
+    &:active {
+      transform: translate(-50%) scale(0.9);
+    }
   }
 }
 
