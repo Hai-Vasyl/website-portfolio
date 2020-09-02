@@ -7,22 +7,10 @@ import {
   AiOutlineRead,
 } from "react-icons/ai"
 import file from "../Vasyl Hai hai.vasyl20@gmail.com.pdf"
+import useData from "../hooks/useData"
 
 function About() {
-  const skills = {
-    frontend: [
-      "HTML/HTML5",
-      "CSS/CSS3 (Flexbox, Grid)",
-      "SASS/SCSS",
-      "BEM methodology",
-      "JavaScript (es6, es7, es8)",
-      "React (Hooks, Context API)",
-      "Redux (Thunk)",
-      "Adaptive, cross-browser layout",
-    ],
-    backend: ["REST API", "Node.js", "Express.js", "TypeScript", "MongoDB"],
-    other: ["GIT, GitHub", "English (Intermediate+)"],
-  }
+  const { skills } = useData()
 
   const mapReducer = (array) => {
     return array.map((item) => {

@@ -4,9 +4,7 @@ import { RiMailSendLine } from "react-icons/ri"
 import { FaLinkedinIn, FaGithub } from "react-icons/fa"
 import { ImWarning } from "react-icons/im"
 import { BsCheck } from "react-icons/bs"
-
-// undraw_online_discussion_5wgl.svg
-import contactsImage from "../images/undraw_usability_testing_2xs4.svg"
+import contactsImage from "../images/undraw_online_discussion_5wgl.svg"
 
 function Contacts() {
   const initialFrom = [

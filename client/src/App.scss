@@ -15,6 +15,7 @@ $colors: (
 $transitions: (
   smooth: 0.17s ease,
   spin: 1s linear infinite,
+  slow: 1s ease,
 );
 $fonts: (
   main: (
@@ -35,6 +36,82 @@ $fonts: (
 }
 @function getFont($font-name) {
   @return map-get($fonts, $font-name);
+}
+
+.preloader {
+  position: fixed;
+  background-color: getColor(main);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: getTransitions(slow);
+  visibility: visible;
+  opacity: 1;
+  z-index: 10;
+  &--disabled {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.lds-ellipsis {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: getColor(secondary);
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
 }
 
 .nav {
@@ -218,6 +295,16 @@ $fonts: (
   display: flex;
   overflow-x: hidden;
   flex-direction: column;
+  animation: fade getTransitions(slow);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .background-shape {
@@ -471,7 +558,6 @@ $fonts: (
     border-top: 1px solid getColor(bg-light);
   }
   &__btn-link {
-    // color: getColor(secondary);
     font-size: 0.9em;
     padding: 7px 10px;
     border: 1px solid getColor(bg-light);
@@ -487,14 +573,10 @@ $fonts: (
     display: flex;
     background-color: getColor(bg-dark-clear);
     text-decoration: none;
-    // color: getColor(text);
     margin-right: 10px;
     transition: getTransitions(smooth);
-    // border-bottom-color: getColor(active-link);
     &:hover {
       border-color: getColor(active-link);
-      // box-shadow: inset 0px 0px 7px rgba(0, 0, 0, 0.2),
-      //   0px 0px 6px getColor(active-link);
     }
     &:active {
       transform: scale(0.9);
@@ -767,8 +849,6 @@ $fonts: (
 .field {
   display: block;
   margin-bottom: 0.1em;
-  // border: 1px solid black;
-  // display: none;
   &__name {
     display: block;
   }
@@ -969,7 +1049,6 @@ $fonts: (
 
 @media (max-width: 860px) {
   .popup {
-    // position: absolute;
     top: calc(50% + 25px);
     &__container {
       flex-direction: column-reverse;
@@ -979,7 +1058,6 @@ $fonts: (
       width: 100%;
       border: none;
       background-color: getColor(main);
-      // backdrop-filter: none;
       border-top-left-radius: 0px;
       border-bottom-right-radius: 5px;
       overflow: hidden;
