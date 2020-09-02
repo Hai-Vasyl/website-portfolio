@@ -1,6 +1,5 @@
 $colors: (
   secondary: rgb(208, 208, 208),
-  accent: white,
   text: #333,
   success: rgb(103, 206, 103),
   active-link: #f80e0e,
@@ -279,7 +278,7 @@ $fonts: (
     color: getColor(light-text);
   }
   &__paragraph {
-    padding-right: 20px;
+    padding-right: 40px;
     font-size: 1.1em;
     line-height: 1.4em;
     margin: 1.8em 0;
@@ -370,6 +369,13 @@ $fonts: (
     border-radius: 3px;
     background-color: getColor(bg-lighter);
     min-height: 10vh;
+    line-height: 23px;
+  }
+  &__accent {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+    color: getColor(bg-dark);
+    display: block;
   }
   &__accent-title {
     color: getColor(bg-dark);
@@ -448,16 +454,14 @@ $fonts: (
   &:nth-child(3) {
     grid-column: 2/3;
     grid-row: 2/3;
-    background-image: url("./project-imgs/project1.1.png");
+    background-image: url("./project-imgs/project3.1.png");
   }
   &__links {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    // border-top-right-radius: 50px;
     background-color: getColor(bg-dark-clear);
-    // border: 1px solid black;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -567,10 +571,8 @@ $fonts: (
   &__imgs {
     position: relative;
     width: 65%;
-    border: 1px solid getColor(bg-light);
-    border-right: none;
+    border-left: 1px solid getColor(bg-dark-clear);
     background-color: getColor(bg-light);
-    backdrop-filter: blur(3px);
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
   }
@@ -977,7 +979,7 @@ $fonts: (
       width: 100%;
       border: none;
       background-color: getColor(main);
-      backdrop-filter: none;
+      // backdrop-filter: none;
       border-top-left-radius: 0px;
       border-bottom-right-radius: 5px;
       overflow: hidden;

@@ -19,9 +19,13 @@ function Navbar() {
   return (
     <div className='nav'>
       <div className='nav__menu'>
-        <NavLink to='/' className='nav__link nav__logo'>
+        <NavLink
+          to='/'
+          className='nav__link nav__logo'
+          onClick={() => dispatchMenu({ type: RESET_MENU })}
+        >
           <RiCodeSSlashLine className='nav__icon' />
-          <span className='nav__name'>Hai-Vasyl</span>
+          <span className='nav__name'>Hai Vasyl</span>
         </NavLink>
         <div
           className={`nav__main-menu ${drop && "nav__main-menu--drop"}`}

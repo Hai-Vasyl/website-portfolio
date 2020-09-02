@@ -12,16 +12,16 @@ function About() {
   const skills = {
     frontend: [
       "HTML/HTML5",
-      "CSS/CSS3",
-      "SASS",
+      "CSS/CSS3 (Flexbox, Grid)",
+      "SASS/SCSS",
       "BEM methodology",
-      "JavaScript",
+      "JavaScript (es6, es7, es8)",
       "React (Hooks, Context API)",
       "Redux (Thunk)",
       "Adaptive, cross-browser layout",
     ],
-    backend: ["REST API", "Node.js", "Express.js", "MongoDB"],
-    other: ["GIT, GitHub", "English (Intermediate)"],
+    backend: ["REST API", "Node.js", "Express.js", "TypeScript", "MongoDB"],
+    other: ["GIT, GitHub", "English (Intermediate+)"],
   }
 
   const mapReducer = (array) => {
@@ -64,8 +64,8 @@ function About() {
               <span className='about__title-name'>Experience</span>
             </h3>
             <p className='about__paragraph'>
-              At the moment I have no experience, so I will be happy for any
-              suggestions)
+              Over 1 year of non-commercial experience. I would be happy to work
+              with you on interesting projects. Do you have any suggestions? =)
             </p>
             <h3 className='about__title'>
               <AiOutlineRead className='about__title-icon' />
@@ -73,6 +73,9 @@ function About() {
             </h3>
             <span className='about__accent-title'>(2017-present)</span>
             <p className='about__paragraph'>
+              <span className='about__accent'>
+                Bachelor's Degree: Computer Science
+              </span>
               Institute of Business and Innovative Technologies of Lviv
               Polytechnic National University
             </p>

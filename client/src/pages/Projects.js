@@ -5,9 +5,13 @@ import project13 from "../project-imgs/project1.3.png"
 import project21 from "../project-imgs/project2.1.png"
 import project22 from "../project-imgs/project2.2.png"
 import project23 from "../project-imgs/project2.3.png"
+import project31 from "../project-imgs/project3.1.png"
+import project32 from "../project-imgs/project3.2.png"
+import project33 from "../project-imgs/project3.3.png"
 import { IoIosRocket } from "react-icons/io"
 import { FaBuysellads, FaGithub } from "react-icons/fa"
 import { BsLayoutTextSidebarReverse } from "react-icons/bs"
+import { RiCodeSSlashLine } from "react-icons/ri"
 import Popup from "../components/Popup"
 import { Context } from "../context/context"
 import { TOGGLE_POPUP_MENU } from "../context/menu/menuTypes"
@@ -35,25 +39,56 @@ function Projects() {
       ),
       technologies: [
         {
-          name: "HTML",
+          name: "HTML/HTML5",
           link:
             "https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML",
         },
         {
-          name: "CSS",
+          name: "CSS/CSS3",
           link:
             "https://developer.mozilla.org/uk/docs/Learn/Getting_started_with_the_web/CSS_basics",
         },
-        { name: "Sass", link: "https://sass-scss.ru" },
-        { name: "BEM", link: "https://en.bem.info/methodology/" },
+        { name: "SASS/SCSS", link: "https://sass-scss.ru" },
+        { name: "BEM methodology", link: "https://en.bem.info/methodology/" },
+        // {
+        //   name: "Responsive layout",
+        //   link:
+        //     "https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design",
+        // },
         {
           name: "JavaScript",
           link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
         },
-        { name: "React", link: "https://reactjs.org" },
-        { name: "Redux", link: "https://redux.js.org" },
-        { name: "Node.js (Express.js)", link: "https://expressjs.com" },
+        { name: "React (Hooks)", link: "https://reactjs.org" },
+        {
+          name: "React router",
+          link: "https://reactrouter.com/web/guides/quick-start",
+        },
+        { name: "Axios", link: "https://github.com/axios/axios" },
+        { name: "Redux (Thunk)", link: "https://redux.js.org" },
+        { name: "REST API", link: "https://restfulapi.net" },
+        { name: "Express.js", link: "https://expressjs.com" },
+        { name: "Node.js", link: "https://nodejs.org/en" },
+        { name: "Mongoose", link: "https://mongoosejs.com" },
         { name: "MongoDB", link: "https://www.mongodb.com" },
+        { name: "Multer", link: "https://www.npmjs.com/package/multer" },
+        { name: "JSON Web Token", link: "https://jwt.io" },
+        { name: "Bcrypt", link: "https://www.npmjs.com/package/bcrypt" },
+        {
+          name: "Express-validator",
+          link: "https://express-validator.github.io/docs",
+        },
+        { name: "Dotenv", link: "https://www.npmjs.com/package/dotenv" },
+
+        { name: "Nodemon", link: "https://nodemon.io" },
+        {
+          name: "Concurrently",
+          link: "https://www.npmjs.com/package/concurrently",
+        },
+        {
+          name: "Body-parser",
+          link: "https://www.npmjs.com/package/body-parser",
+        },
       ],
       status: false,
     },
@@ -73,63 +108,115 @@ function Projects() {
       ),
       technologies: [
         {
-          name: "HTML",
+          name: "HTML/HTML5",
           link:
             "https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML",
         },
         {
-          name: "CSS",
+          name: "CSS/CSS3",
           link:
             "https://developer.mozilla.org/uk/docs/Learn/Getting_started_with_the_web/CSS_basics",
         },
-        { name: "Sass", link: "https://sass-scss.ru" },
-        { name: "BEM", link: "https://en.bem.info/methodology/" },
+        {
+          name: "Responsive layout",
+          link:
+            "https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design",
+        },
         {
           name: "JavaScript",
           link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
         },
-        { name: "React", link: "https://reactjs.org" },
-        { name: "Redux", link: "https://redux.js.org" },
-        { name: "Node.js (Express.js)", link: "https://expressjs.com" },
+        { name: "React (Hooks, Context API)", link: "https://reactjs.org" },
+        {
+          name: "React router",
+          link: "https://reactrouter.com/web/guides/quick-start",
+        },
+        { name: "Axios", link: "https://github.com/axios/axios" },
+        { name: "REST API", link: "https://restfulapi.net" },
+        { name: "Express.js", link: "https://expressjs.com" },
+        { name: "Node.js", link: "https://nodejs.org/en" },
+        { name: "Mongoose", link: "https://mongoosejs.com" },
         { name: "MongoDB", link: "https://www.mongodb.com" },
+        { name: "JSON Web Token", link: "https://jwt.io" },
+        { name: "Bcrypt", link: "https://www.npmjs.com/package/bcrypt" },
+        {
+          name: "Express-validator",
+          link: "https://express-validator.github.io/docs",
+        },
+        { name: "Config", link: "https://www.npmjs.com/package/config" },
+
+        { name: "Nodemon", link: "https://nodemon.io" },
+        {
+          name: "Concurrently",
+          link: "https://www.npmjs.com/package/concurrently",
+        },
       ],
       status: false,
     },
     {
       images: [
-        { img: project11, status: true },
-        { img: project12, status: false },
-        { img: project13, status: false },
+        { img: project31, status: true },
+        { img: project32, status: false },
+        { img: project33, status: false },
       ],
-      github: "https://github.com/Hai-Vasyl/some-ither",
-      demo: "https://ad-stack.herokuapp.com",
+      github: "https://github.com/Hai-Vasyl/website-portfolio",
+      demo: "https://hai-vasyl.herokuapp.com",
       title: (
         <>
-          <FaBuysellads className='btn__icon' />
-          <span className='btn__name'>AD-Stack</span>
+          <RiCodeSSlashLine className='btn__icon' />
+          <span className='btn__name'>Hai Vasyl</span>
         </>
       ),
       technologies: [
         {
-          name: "HTML",
+          name: "HTML/HTML5",
           link:
             "https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML",
         },
         {
-          name: "CSS",
+          name: "CSS/CSS3",
           link:
             "https://developer.mozilla.org/uk/docs/Learn/Getting_started_with_the_web/CSS_basics",
         },
-        { name: "Sass", link: "https://sass-scss.ru" },
-        { name: "BEM", link: "https://en.bem.info/methodology/" },
+        { name: "SASS/SCSS", link: "https://sass-scss.ru" },
+        { name: "BEM methodology", link: "https://en.bem.info/methodology/" },
+        {
+          name: "Responsive layout",
+          link:
+            "https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design",
+        },
         {
           name: "JavaScript",
           link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
         },
-        { name: "React", link: "https://reactjs.org" },
-        { name: "Redux", link: "https://redux.js.org" },
-        { name: "Node.js (Express.js)", link: "https://expressjs.com" },
-        { name: "MongoDB", link: "https://www.mongodb.com" },
+        { name: "React (Hooks, Context API)", link: "https://reactjs.org" },
+        {
+          name: "React router",
+          link: "https://reactrouter.com/web/guides/quick-start",
+        },
+        { name: "Axios", link: "https://github.com/axios/axios" },
+        { name: "REST API", link: "https://restfulapi.net" },
+        { name: "Express.js", link: "https://expressjs.com" },
+        { name: "Node.js", link: "https://nodejs.org/en" },
+        {
+          name: "Nodemailer",
+          link: "https://nodemailer.com/about",
+        },
+        {
+          name: "Express-validator",
+          link: "https://express-validator.github.io/docs",
+        },
+        { name: "Dotenv", link: "https://www.npmjs.com/package/dotenv" },
+
+        { name: "Nodemon", link: "https://nodemon.io" },
+        {
+          name: "Concurrently",
+          link: "https://www.npmjs.com/package/concurrently",
+        },
+        {
+          name: "Body-parser",
+          link: "https://www.npmjs.com/package/body-parser",
+        },
       ],
       status: false,
     },

@@ -17,8 +17,8 @@ function Hero() {
             Hai Vasyl
           </h1>
           <p className='hero__paragraph'>
-            I am a student of Lviv Polytechnic University. I am interested in
-            web programming, I like new programming technologies.
+            I am interested in web development. Always motivated to learn
+            something new, grow and succeed in programming.
           </p>
           <div className='hero__btns'>
             <Link to='/projects' className='btn btn-primary'>
