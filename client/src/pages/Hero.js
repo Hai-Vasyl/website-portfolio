@@ -14,7 +14,7 @@ function Hero() {
           <h1 className='hero__title'>
             <span className='hero__accent'>Hi, I`m</span>
             <br />
-            Hai Vasyl
+            Vasyl Hai
           </h1>
           <p className='hero__paragraph'>
             I am interested in web development. Always motivated to learn
