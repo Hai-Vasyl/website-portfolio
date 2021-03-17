@@ -9,7 +9,7 @@ import project23 from "../project-imgs/project2.3.png"
 import project31 from "../project-imgs/project3.1.png"
 import project32 from "../project-imgs/project3.2.png"
 import project33 from "../project-imgs/project3.3.png"
-import { IoIosRocket } from "react-icons/io"
+import { IoIosRocket, IoMdSchool } from "react-icons/io"
 import { FaBuysellads } from "react-icons/fa"
 
 function useData() {
@@ -55,6 +55,7 @@ function useData() {
       demo: "https://school-app-cms.herokuapp.com/",
       title: (
         <>
+          <IoMdSchool className='btn__icon' />
           <span className='btn__name'>School Website</span>
         </>
       ),
@@ -81,22 +82,29 @@ function useData() {
           name: "React router",
           link: "https://reactrouter.com/web/guides/quick-start",
         },
-        { name: "Axios", link: "https://github.com/axios/axios" },
         { name: "Redux (Thunk)", link: "https://redux.js.org" },
-        { name: "REST API", link: "https://restfulapi.net" },
+        {
+          name: "Apollo Server",
+          link: "https://www.apollographql.com/docs/apollo-server/",
+        },
+        {
+          name: "Apollo Client",
+          link: "https://www.apollographql.com/docs/react/",
+        },
+        { name: "TypeScript", link: "https://www.typescriptlang.org/" },
+        { name: "GraphQL", link: "https://graphql.org/" },
+        { name: "Webpack", link: "https://webpack.js.org/" },
+        { name: "Babel", link: "https://babeljs.io/" },
+        { name: "AWS", link: "https://aws.amazon.com/ru/" },
+        { name: "CKEditor 5", link: "https://ckeditor.com/ckeditor-5/" },
+        { name: "Uuid", link: "https://www.npmjs.com/package/uuid" },
         { name: "Express.js", link: "https://expressjs.com" },
         { name: "Node.js", link: "https://nodejs.org/en" },
         { name: "Mongoose", link: "https://mongoosejs.com" },
         { name: "MongoDB", link: "https://www.mongodb.com" },
-        { name: "Multer", link: "https://www.npmjs.com/package/multer" },
         { name: "JSON Web Token", link: "https://jwt.io" },
         { name: "Bcrypt", link: "https://www.npmjs.com/package/bcrypt" },
-        {
-          name: "Express-validator",
-          link: "https://express-validator.github.io/docs",
-        },
         { name: "Dotenv", link: "https://www.npmjs.com/package/dotenv" },
-
         { name: "Nodemon", link: "https://nodemon.io" },
         {
           name: "Concurrently",
@@ -148,6 +156,7 @@ function useData() {
         { name: "Axios", link: "https://github.com/axios/axios" },
         { name: "Redux (Thunk)", link: "https://redux.js.org" },
         { name: "REST API", link: "https://restfulapi.net" },
+        { name: "AWS", link: "https://aws.amazon.com/ru/" },
         { name: "Express.js", link: "https://expressjs.com" },
         { name: "Node.js", link: "https://nodejs.org/en" },
         { name: "Mongoose", link: "https://mongoosejs.com" },

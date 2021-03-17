@@ -52,8 +52,8 @@ function About() {
               <span className='about__title-name'>Experience</span>
             </h3>
             <p className='about__paragraph'>
-              Over 1 year of non-commercial experience. I would be happy to work
-              with you on interesting projects. Do you have any suggestions? =)
+              Over 1 year of experience. I would be happy to work with you on
+              interesting projects. Do you have any suggestions? =)
             </p>
             <h3 className='about__title'>
               <AiOutlineRead className='about__title-icon' />
